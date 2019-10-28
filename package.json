@@ -1,0 +1,14 @@
+{
+  "name": "node-tcp",
+  "version": "1.0.0",
+  "description": "a simple node tcp server",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0"
+  }
+}
