@@ -8,4 +8,4 @@ RUN yarn install \
 
 ADD ./ /www
 
-CMD ["yarn", "start"]
+CMD ["yarn", "prod"]
