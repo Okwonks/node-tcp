@@ -1,0 +1,6 @@
+#!/bin/bash -eu
+PROJECT_ID=node-tcp-server
+IMAGE_TAG=gcr.io/node-tcp-server/node-tcp:latest
+docker build . -t "${IMAGE_TAG}" --build-arg NODE_ENV=production
+
+gcloud --project=node-tcp-server docker -- push "${IMAGE_TAG}"
