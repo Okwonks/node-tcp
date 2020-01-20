@@ -17,8 +17,8 @@ module.exports = () => {
 
 function writeLogEntry(severity, ...args) {
   if (process.env.NODE_ENV === 'production') {
-    const logName = 'projects/node-tcp-server/logs/nodetcp';
-    const logging = new Logging({ projectId:'node-tcp-server' });
+    const logName = 'projects/tcp-node-server/logs/nodetcp';
+    const logging = new Logging({ projectId:'tcp-node-server' });
     const log = logging.log(logName);
 
     const resource = { type:'gce_instance' };
