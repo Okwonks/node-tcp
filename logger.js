@@ -1,11 +1,8 @@
 /*eslint no-console: 0*/
-
-const uuid = require('uuid/v1');
 const { version } = require('./package.json');
 const { Logging } = require('@google-cloud/logging');
 
-const instanceId = uuid();
-const nodeTcp = `node-tcp v${version} ${instanceId}`;
+const nodeTcp = `node-tcp v${version}`;
 
 module.exports = () => {
   return {

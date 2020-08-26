@@ -6,6 +6,14 @@ let clients = [];
 
 const server = net.createServer();
 
+const broadcast = (message, sender) => {
+  clients.forEach((client) => {
+    if(client !== sender) {
+      client.write(message);
+    }
+  });
+}
+
 server.on('connection', socket => {
   log.info('Server connected...');
   clients.push(socket);
@@ -15,14 +23,10 @@ server.on('connection', socket => {
   socket.on('error', err => log.error(err.message));
 
   socket.on('data', async data => {
-    clients.forEach((client, idx) => {
-      if(clients[idx] !== client) {
-        clients[idx].write(data);
-      }
-    });
-
     const received = data.toString().trim();
-    log.info(`Data received from client: ${socket}`, received);
+    broadcast(`${socket.remoteAddress}:${socket.remotePort} > ${received}\n`, socket);
+
+    log.info(`Data received from client ${socket.remoteAddress}:${socket.remotePort}:`, received);
   });
 
   socket.on('end', () => clients.splice(clients.indexOf(socket), 1));
